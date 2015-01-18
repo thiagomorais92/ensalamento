@@ -1,0 +1,83 @@
+package br.com.lucas.escola.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.com.lucas.escola.dao.AlunoDao;
+import br.com.lucas.escola.dao.SalaDao;
+import br.com.lucas.escola.model.Aluno;
+import br.com.lucas.escola.model.Sala;
+
+@Transactional
+@Controller
+public class AlunoController {
+
+	@Autowired
+	private AlunoDao dao;
+	
+	@Autowired
+	private SalaDao salaDao;
+	
+	@RequestMapping("aluno-cadastrar")
+	public String adicionaAluno(Aluno aluno) {
+		Integer id = aluno.getId();
+		if (id == 0 || id == null) {
+			dao.salvar(aluno); 
+		} else {
+			dao.atualizar(aluno);
+		}
+		return "redirect:aluno/lista-alunos";			
+	}
+	
+	@RequestMapping("aluno-excluir")
+	public String excluirAluno(Aluno aluno) {
+		Aluno alunoASerExcluido = dao.findAlunoById(aluno.getId());
+		dao.excluir(alunoASerExcluido);
+		return "aluno/lista-alunos";
+	}
+	
+	@RequestMapping("aluno-novo")
+	public String form() {
+		return "aluno/cadastrar-aluno";
+	}
+	
+	@RequestMapping("salas-alunos")
+	public String recuperaAlunosDaSala(Integer id, Model model) {
+		List<Aluno> alunos = dao.findAlunoByIdSala(id);
+		model.addAttribute("alunos", alunos);
+		Sala sala = salaDao.findSalaById(id);
+		model.addAttribute("sala", sala);
+		return "salas/alunos-da-sala";
+	}
+	
+	@RequestMapping("procurar-alunos")
+	public String procurarAlunosNaoEnsalados(Aluno aluno, Integer numSala, Model model) {
+		List<Aluno> alunos = dao.getAlunosNaoEnsaladosByNome(aluno.getNome());
+		Sala sala = salaDao.findSalaById(numSala);
+		model.addAttribute("alunos", alunos);
+		model.addAttribute("sala", sala);
+		return "aluno/procurar-alunos";
+	}	
+	
+	@RequestMapping("procurar-alunos-page")
+	public String formProcuraAlunos(Integer numSala, Model model) {
+		Sala sala = salaDao.findSalaById(numSala);
+		model.addAttribute("sala", sala);
+		return "aluno/procurar-alunos";
+	}
+	
+	@RequestMapping("adiciona-aluno-na-sala")
+	public String adicionaAlunoNaSala(Integer idSala, Integer idAluno) {
+		Sala sala = salaDao.findSalaById(idSala);
+		Aluno aluno = dao.findAlunoById(idAluno);
+		aluno.setSala(sala);
+		dao.salvar(aluno);
+		return "redirect:salas-alunos";
+	}
+	
+}

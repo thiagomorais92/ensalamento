@@ -1,0 +1,60 @@
+package br.com.lucas.escola.model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ * 
+ * @author Lucas
+ *
+ */
+
+@Entity
+@Table(name = "aluno")
+public class Aluno {
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "ID_ALUNO")
+	private int id;
+	
+	@Column(name = "NOME")
+	private String nome;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_SALA")
+	private Sala sala;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+	
+	public Sala getSala() {
+		return sala;
+	}
+	
+	
+}

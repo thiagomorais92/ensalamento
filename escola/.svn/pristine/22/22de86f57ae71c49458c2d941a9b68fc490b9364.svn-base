@@ -1,0 +1,36 @@
+package br.com.lucas.escola.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.com.lucas.escola.dao.SalaDao;
+import br.com.lucas.escola.model.Sala;
+
+@Transactional
+@Controller
+public class SalaController {
+	
+	@Autowired
+	private SalaDao dao;
+	
+	@RequestMapping("salas-lista")
+	public String recuperaTodasAsSalas(Model model) {
+		model.addAttribute("salas", dao.getAll());
+		return "salas/lista-salas";
+	}
+	
+	@RequestMapping("salas-nova")
+	public String form() {
+		return "salas/nova-sala";
+	}
+	
+	@RequestMapping("salas-cadastrar")
+	public String cadastrarSala(Sala sala) {
+		dao.salvar(sala);
+		return "redirect:salas-lista";
+	}
+	
+}
