@@ -22,6 +22,11 @@ public class BaseController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/index")
+		public String index() {
+			return "index";
+		}
+	
 	//TODO method logout
 	
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+ 	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	 xmlns="http://www.springframework.org/schema/security"
+  	 xsi:schemaLocation="http://www.springframework.org/schema/beans
+   	 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+     http://www.springframework.org/schema/security 
+     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+     
+
+	<http auto-config="true">
+		<!-- Não seta nenhuma restrição para a página login.jsp -->
+		<intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+		<!-- Acesso restrito a todas as páginas -->
+<!-- 		<intercept-url pattern="/**" access="ROLE_USER" /> -->
+
+		<!-- Seta a página de login e o que fazer quando o login falhar -->
+		<form-login login-page="/index.jsp"
+			authentication-failure-url="/index.jsp?login_error=1"
+			default-target-url="/home"
+			login-processing-url="/j_spring_security_check" />
+
+		<!-- Seta qual página o usuário será redirecionado caso seja feito o logout -->
+		<logout logout-success-url="/index" />
+		
+	</http>
+	
+	
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select u.email, u.passwd, u.enabled from usuario u where email = ?"
+				authorities-by-username-query="select u.email as login, u.user_role as role from usuario u where u.email = ?" />
+		</authentication-provider>
+	</authentication-manager>     
+	
+    <bean:bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 
+        <bean:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <bean:property name="url"
+            value="jdbc:mysql://localhost/escola" />
+        <bean:property name="username" value="root" />
+        <bean:property name="password" value="san123@" />
+    </bean:bean>	
+    
+	
+		
+</bean:beans>	

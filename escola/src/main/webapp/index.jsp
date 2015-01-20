@@ -43,6 +43,7 @@
 </div>
 
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form action="j_spring_security_check" method="post">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -50,26 +51,22 @@
         <h4 class="modal-title" id="exampleModalLabel">New message</h4>
       </div>
       <div class="modal-body">
-        <form>
           <div class="form-group">
             <label for="recipient-name" class="control-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name" placeholder="Login">
+            <input type="text" name="j_username" class="form-control" id="recipient-name" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="senha" class="control-label">Message:</label>
-            <input type="password" class="form-control" id="senha" placeholder="Senha"/>
+            <input type="password" name="j_password" class="form-control" id="senha" placeholder="Senha"/>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Logar</button>
+        <button type="submit" name="submit" class="btn btn-primary">Logar</button>
       </div>
     </div>
   </div>
+  </form>
 </div>
-
-
-
 </body>
 </html>                                		
