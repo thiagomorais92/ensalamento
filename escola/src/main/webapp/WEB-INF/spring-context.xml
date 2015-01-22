@@ -16,6 +16,11 @@
 	<context:component-scan base-package="br.com.lucas.escola" />
 	<mvc:annotation-driven />
 
+		<!-- Essa config, serve para que o spring perceba os recursos da app. -->
+	<mvc:resources mapping="/resources/**" 
+				   location="/resources/"
+				   cache-period="120"/>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
