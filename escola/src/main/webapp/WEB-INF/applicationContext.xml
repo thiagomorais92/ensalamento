@@ -14,7 +14,7 @@
 		<intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
 		<!-- Acesso restrito a todas as páginas -->
-<!-- 		<intercept-url pattern="/**" access="ROLE_USER" /> -->
+		<intercept-url pattern="/**" access="ROLE_USER" />
 
 		<!-- Seta a página de login e o que fazer quando o login falhar -->
 		<form-login login-page="/index.jsp"

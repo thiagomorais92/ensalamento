@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import br.com.lucas.escola.model.Aluno;
-import br.com.lucas.escola.model.Sala;
+import br.com.lucas.escola.model.Turma;
 
 @Repository
 public class SalaDaoImpl implements SalaDao {
@@ -18,17 +18,17 @@ public class SalaDaoImpl implements SalaDao {
 	private EntityManager manager;
 
 	@SuppressWarnings("unchecked")
-	public List<Sala> getAll() {
-		return (List<Sala>) manager.createQuery("select s from Sala s")
+	public List<Turma> getAll() {
+		return (List<Turma>) manager.createQuery("select s from Sala s")
 				.getResultList();
 	}
 
-	public void salvar(Sala sala) {
+	public void salvar(Turma sala) {
 		manager.persist(sala);
 	}
 	
-	public Sala findSalaById(Integer id){
-		return manager.find(Sala.class, id);
+	public Turma findSalaById(Integer id){
+		return manager.find(Turma.class, id);
 	}
 
 }

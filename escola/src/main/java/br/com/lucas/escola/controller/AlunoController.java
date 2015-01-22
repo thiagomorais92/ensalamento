@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.lucas.escola.dao.AlunoDao;
 import br.com.lucas.escola.dao.SalaDao;
 import br.com.lucas.escola.model.Aluno;
-import br.com.lucas.escola.model.Sala;
+import br.com.lucas.escola.model.Turma;
 
 /**
  * 
@@ -89,7 +89,7 @@ public class AlunoController {
 	@RequestMapping(value = "/procurar", method = RequestMethod.POST)
 	public String procurarAlunosNaoEnsalados(Aluno aluno, Integer numSala, Model model) {
 		List<Aluno> alunos = alunoDao.getAlunosNaoEnsaladosByNome(aluno.getNome());
-		Sala sala = salaDao.findSalaById(numSala);
+		Turma sala = salaDao.findSalaById(numSala);
 		model.addAttribute("alunos", alunos);
 		model.addAttribute("sala", sala);
 		return "aluno/procurar-alunos";
@@ -103,7 +103,7 @@ public class AlunoController {
 	 */
 	@RequestMapping(value = "/nao-ensalados")
 	public String formProcuraAlunos(Integer numSala, Model model) {
-		Sala sala = salaDao.findSalaById(numSala);
+		Turma sala = salaDao.findSalaById(numSala);
 		model.addAttribute("sala", sala);
 		return "aluno/procurar-alunos";
 	}

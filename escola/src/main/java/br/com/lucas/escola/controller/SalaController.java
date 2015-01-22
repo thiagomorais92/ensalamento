@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.lucas.escola.dao.AlunoDao;
 import br.com.lucas.escola.dao.SalaDao;
 import br.com.lucas.escola.model.Aluno;
-import br.com.lucas.escola.model.Sala;
+import br.com.lucas.escola.model.Turma;
 
 /**
  * 
@@ -47,7 +47,7 @@ public class SalaController {
 	}
 	
 	@RequestMapping(value = "/cadastrar")
-	public String cadastrarSala(@Valid Sala sala, BindingResult result) {
+	public String cadastrarSala(@Valid Turma sala, BindingResult result) {
 		if (!result.hasErrors()) {
 			salaDao.salvar(sala);
 			return "redirect:lista";
@@ -66,7 +66,7 @@ public class SalaController {
 	public String recuperaAlunosDaSala(Integer id, Model model) {
 		List<Aluno> alunos = alunoDao.findAlunoByIdSala(id);
 		model.addAttribute("alunos", alunos);
-		Sala sala = salaDao.findSalaById(id);
+		Turma sala = salaDao.findSalaById(id);
 		model.addAttribute("sala", sala);
 		return "salas/alunos-da-sala";
 	}

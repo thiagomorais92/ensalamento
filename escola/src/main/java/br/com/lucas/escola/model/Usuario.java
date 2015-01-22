@@ -1,5 +1,7 @@
 package br.com.lucas.escola.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,13 +15,15 @@ import br.com.lucas.escola.enums.Role;
 /**
  * 
  * @author Lucas Moreira
- *	Entidade que representará um usuário ou administrador do sistema
+ *	Entidade que representará os usuários do sisteam
  *
  */
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
+	
+	private static final long serialVersionUID = 7369810661419783679L;
 
 	@Id
 	@GeneratedValue
@@ -89,9 +93,6 @@ public class Usuario {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
-	
-	
 	
 	
 }

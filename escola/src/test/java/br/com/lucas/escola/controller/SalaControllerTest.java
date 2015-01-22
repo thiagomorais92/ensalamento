@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.lucas.escola.dao.SalaDao;
 import br.com.lucas.escola.model.Aluno;
-import br.com.lucas.escola.model.Sala;
+import br.com.lucas.escola.model.Turma;
 
 /**
  * Classe para testar funcionalidades de Sala.
@@ -31,21 +31,21 @@ public class SalaControllerTest {
 	
 	@Test
 	public void eHParaAdicionarSala() {
-		Sala sala = new Sala();
+		Turma sala = new Turma();
 		sala.setCapacidade(3);
 		sala.setAlunos(null);
-		sala.setNomeSala("5ªA");		
+		sala.setNomeSala("5ï¿½A");		
 
 		dao.salvar(sala);
 		
-		List<Sala> salas = dao.getAll();
+		List<Turma> salas = dao.getAll();
 		
 		Assert.assertEquals(true, salas.size() > 0);
 	}
 	
 	@Test	
 	public void recuperarSalaPorId(){
-		Sala sala = dao.findSalaById(6);
+		Turma sala = dao.findSalaById(6);
 		Assert.assertEquals(true, sala != null);
 	}
 
