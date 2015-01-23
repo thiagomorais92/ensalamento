@@ -12,10 +12,8 @@ public class Diario implements Serializable{
 	
 	private Turma turma;
 	
-	/*
-	 * TODO está confuso
-	 */
-	
-	
-	
+    /*
+     * TODO Estudar e levantar os requisitos dessa entidade.
+     * Por enquanto não iremos utilizá-la.	
+     */
 }

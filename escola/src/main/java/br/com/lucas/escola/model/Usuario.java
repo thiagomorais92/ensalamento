@@ -45,6 +45,9 @@ public class Usuario implements Serializable{
 	@Column(name = "USER_ROLE")
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@Column(name = "COD_PESSOA")
+	private Pessoa pessoa;
 
 	public Integer getId() {
 		return id;

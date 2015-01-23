@@ -12,8 +12,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.com.lucas.escola.enums.Turno;
@@ -48,11 +51,8 @@ public class Curso implements Serializable {
 	@Enumerated(EnumType.STRING)
     private Turno turno;	
 	
-    @ManyToMany(mappedBy="cursos")
-    private Set<Aluno> alunos;
-    
-    @Column(name = "MATERIA")
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "ID_MATERIA")
     private Materia materia;
 
 	public Integer getIdCurso() {
@@ -95,14 +95,6 @@ public class Curso implements Serializable {
 		this.turno = turno;
 	}
 
-	public Set<Aluno> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(Set<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
 	public Materia getMateria() {
 		return materia;
 	}
@@ -115,7 +107,6 @@ public class Curso implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((alunos == null) ? 0 : alunos.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result
 				+ ((desconto == null) ? 0 : desconto.hashCode());
@@ -135,11 +126,6 @@ public class Curso implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Curso other = (Curso) obj;
-		if (alunos == null) {
-			if (other.alunos != null)
-				return false;
-		} else if (!alunos.equals(other.alunos))
-			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -169,6 +155,7 @@ public class Curso implements Serializable {
 			return false;
 		return true;
 	}
+
     
     
 }

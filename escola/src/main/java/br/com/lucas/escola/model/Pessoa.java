@@ -3,7 +3,9 @@ package br.com.lucas.escola.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -25,26 +27,338 @@ public class Pessoa implements Serializable{
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "ID_PESSOA")
 	private Integer idPessoa;
+	
+	@Column(name = "NOME")
 	private String nome;
+	
+	@Column(name = "CPF")
     private String cpf;
+	
+	@Column(name = "RG")
     private String rg;
-    private String sexo;
+	
+	@Column(name = "SEXO")
+    private Character sexo;
+	
+	@Column(name = "NOME_PAI")
     private String nomepai;
+	
+	@Column(name = "NOME_MAE")
     private String nomemae;
+	
+	@Column(name = "ESTADO_CIVIL")
     private String estadocivil;
+	
+	@Column(name = "DT_NASC")
     private Date dtnasc;
+	
+	@Column(name = "NACIONALIDADE")
     private String nacionalidade;
+	
+	@Column(name = "NATURALIDADE")
     private String naturalidade;
+	
+	@Column(name = "TEL")
     private String telefone;
+	
+	@Column(name = "EMAIL")
     private String email;
+	
+	@Column(name = "GRAU_ESCOLAR")
     private String grauesc;
+	
+	
+	/*
+	 * TODO Normalizar essas informações.
+	 * Criar entidade 'Endereço'.
+	 */
     private String tipoLogradouro;
     private String logradouro;
     private String cep;
     private String numero;
     private String bairro;
     private String cidade;
-    private String uf;	
+    private String uf;
+    
+	public Integer getIdPessoa() {
+		return idPessoa;
+	}
+	public void setIdPessoa(Integer idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getRg() {
+		return rg;
+	}
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	public Character getSexo() {
+		return sexo;
+	}
+	public void setSexo(Character sexo) {
+		this.sexo = sexo;
+	}
+	public String getNomepai() {
+		return nomepai;
+	}
+	public void setNomepai(String nomepai) {
+		this.nomepai = nomepai;
+	}
+	public String getNomemae() {
+		return nomemae;
+	}
+	public void setNomemae(String nomemae) {
+		this.nomemae = nomemae;
+	}
+	public String getEstadocivil() {
+		return estadocivil;
+	}
+	public void setEstadocivil(String estadocivil) {
+		this.estadocivil = estadocivil;
+	}
+	public Date getDtnasc() {
+		return dtnasc;
+	}
+	public void setDtnasc(Date dtnasc) {
+		this.dtnasc = dtnasc;
+	}
+	public String getNacionalidade() {
+		return nacionalidade;
+	}
+	public void setNacionalidade(String nacionalidade) {
+		this.nacionalidade = nacionalidade;
+	}
+	public String getNaturalidade() {
+		return naturalidade;
+	}
+	public void setNaturalidade(String naturalidade) {
+		this.naturalidade = naturalidade;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getGrauesc() {
+		return grauesc;
+	}
+	public void setGrauesc(String grauesc) {
+		this.grauesc = grauesc;
+	}
+	public String getTipoLogradouro() {
+		return tipoLogradouro;
+	}
+	public void setTipoLogradouro(String tipoLogradouro) {
+		this.tipoLogradouro = tipoLogradouro;
+	}
+	public String getLogradouro() {
+		return logradouro;
+	}
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String baStringirro) {
+		this.bairro = bairro;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((dtnasc == null) ? 0 : dtnasc.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result
+				+ ((estadocivil == null) ? 0 : estadocivil.hashCode());
+		result = prime * result + ((grauesc == null) ? 0 : grauesc.hashCode());
+		result = prime * result
+				+ ((idPessoa == null) ? 0 : idPessoa.hashCode());
+		result = prime * result
+				+ ((logradouro == null) ? 0 : logradouro.hashCode());
+		result = prime * result
+				+ ((nacionalidade == null) ? 0 : nacionalidade.hashCode());
+		result = prime * result
+				+ ((naturalidade == null) ? 0 : naturalidade.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((nomemae == null) ? 0 : nomemae.hashCode());
+		result = prime * result + ((nomepai == null) ? 0 : nomepai.hashCode());
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
+		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result
+				+ ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result
+				+ ((tipoLogradouro == null) ? 0 : tipoLogradouro.hashCode());
+		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pessoa other = (Pessoa) obj;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (dtnasc == null) {
+			if (other.dtnasc != null)
+				return false;
+		} else if (!dtnasc.equals(other.dtnasc))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (estadocivil == null) {
+			if (other.estadocivil != null)
+				return false;
+		} else if (!estadocivil.equals(other.estadocivil))
+			return false;
+		if (grauesc == null) {
+			if (other.grauesc != null)
+				return false;
+		} else if (!grauesc.equals(other.grauesc))
+			return false;
+		if (idPessoa == null) {
+			if (other.idPessoa != null)
+				return false;
+		} else if (!idPessoa.equals(other.idPessoa))
+			return false;
+		if (logradouro == null) {
+			if (other.logradouro != null)
+				return false;
+		} else if (!logradouro.equals(other.logradouro))
+			return false;
+		if (nacionalidade == null) {
+			if (other.nacionalidade != null)
+				return false;
+		} else if (!nacionalidade.equals(other.nacionalidade))
+			return false;
+		if (naturalidade == null) {
+			if (other.naturalidade != null)
+				return false;
+		} else if (!naturalidade.equals(other.naturalidade))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (nomemae == null) {
+			if (other.nomemae != null)
+				return false;
+		} else if (!nomemae.equals(other.nomemae))
+			return false;
+		if (nomepai == null) {
+			if (other.nomepai != null)
+				return false;
+		} else if (!nomepai.equals(other.nomepai))
+			return false;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
+		if (sexo == null) {
+			if (other.sexo != null)
+				return false;
+		} else if (!sexo.equals(other.sexo))
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
+			return false;
+		if (tipoLogradouro == null) {
+			if (other.tipoLogradouro != null)
+				return false;
+		} else if (!tipoLogradouro.equals(other.tipoLogradouro))
+			return false;
+		if (uf == null) {
+			if (other.uf != null)
+				return false;
+		} else if (!uf.equals(other.uf))
+			return false;
+		return true;
+	}	
+    
+    
 	
 }
