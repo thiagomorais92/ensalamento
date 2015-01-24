@@ -41,12 +41,17 @@
                             <li><a href="<%=request.getContextPath()%>/sala/nova">Cadastrar Sala</a></li>
                             <li><a href="<%=request.getContextPath()%>/sala/lista">Salas Cadastradas</a></li>
                         </ul>
-                    </li>                      
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Sair</a></li>
-					</ul>
+					<li>
+						<a href="#">Logado como: Fulano</a>
+					</li>
+					<li>
+						<a href="#">Sair</a>
+					</li>                  
+                
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

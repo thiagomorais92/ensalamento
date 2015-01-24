@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-@Table(name = "TURMA")
+@Table(name = "turma")
 public class Turma implements Serializable{
 
 	private static final long serialVersionUID = -390790755655999739L;

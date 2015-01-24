@@ -15,7 +15,7 @@ import br.com.lucas.escola.enums.Role;
 /**
  * 
  * @author Lucas Moreira
- *	Entidade que representará os usuários do sisteam
+ *	Entidade que representará os usuários do sistema
  *
  */
 

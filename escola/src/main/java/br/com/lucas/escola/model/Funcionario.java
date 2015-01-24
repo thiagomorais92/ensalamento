@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /**
  * Classe que representa a entidade Funcionario
@@ -18,6 +19,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  */
 
 @Entity
+@Table(name = "funcionario")
 @PrimaryKeyJoinColumn(name = "idPessoa")
 public class Funcionario extends Pessoa implements Serializable{
 

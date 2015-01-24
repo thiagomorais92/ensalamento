@@ -13,7 +13,9 @@
 		<!-- Não seta nenhuma restrição para a página login.jsp -->
 		<intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-		<!-- Acesso restrito a todas as páginas -->
+        <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        
+        <!-- Acesso restrito a todas as páginas -->
 		<intercept-url pattern="/**" access="ROLE_USER" />
 
 		<!-- Seta a página de login e o que fazer quando o login falhar -->
@@ -46,6 +48,5 @@
         <bean:property name="password" value="san123@" />
     </bean:bean>	
     
-	
 		
 </bean:beans>	
