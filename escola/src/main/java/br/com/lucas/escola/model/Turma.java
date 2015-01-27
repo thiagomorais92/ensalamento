@@ -1,7 +1,9 @@
 package br.com.lucas.escola.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -45,6 +49,16 @@ public class Turma implements Serializable{
 	
 	@ManyToMany(mappedBy="turmas")
 	private Set<Aluno> alunos;
+
+	@OneToMany
+	private List<DiaDaSemana> diasDaSemana;
+	
+	@Column(name = "VAGAS")
+	private Integer vagas;
+	
+	@Column(name = "DT_INICIO")
+	@Temporal(TemporalType.DATE)
+	private Date dataDeInicio;
 
 	public Integer getCodTurma() {
 		return codTurma;
@@ -78,6 +92,30 @@ public class Turma implements Serializable{
 		this.alunos = alunos;
 	}
 
+	public List<DiaDaSemana> getDiasDaSemana() {
+		return diasDaSemana;
+	}
+
+	public void setDiasDaSemana(List<DiaDaSemana> diasDaSemana) {
+		this.diasDaSemana = diasDaSemana;
+	}
+
+	public Integer getVagas() {
+		return vagas;
+	}
+
+	public void setVagas(Integer vagas) {
+		this.vagas = vagas;
+	}
+
+	public Date getDataDeInicio() {
+		return dataDeInicio;
+	}
+
+	public void setDataDeInicio(Date dataDeInicio) {
+		this.dataDeInicio = dataDeInicio;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,7 +125,12 @@ public class Turma implements Serializable{
 				+ ((codTurma == null) ? 0 : codTurma.hashCode());
 		result = prime * result + ((curso == null) ? 0 : curso.hashCode());
 		result = prime * result
+				+ ((dataDeInicio == null) ? 0 : dataDeInicio.hashCode());
+		result = prime * result
 				+ ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result
+				+ ((diasDaSemana == null) ? 0 : diasDaSemana.hashCode());
+		result = prime * result + ((vagas == null) ? 0 : vagas.hashCode());
 		return result;
 	}
 
@@ -115,11 +158,30 @@ public class Turma implements Serializable{
 				return false;
 		} else if (!curso.equals(other.curso))
 			return false;
+		if (dataDeInicio == null) {
+			if (other.dataDeInicio != null)
+				return false;
+		} else if (!dataDeInicio.equals(other.dataDeInicio))
+			return false;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
+		if (diasDaSemana == null) {
+			if (other.diasDaSemana != null)
+				return false;
+		} else if (!diasDaSemana.equals(other.diasDaSemana))
+			return false;
+		if (vagas == null) {
+			if (other.vagas != null)
+				return false;
+		} else if (!vagas.equals(other.vagas))
+			return false;
 		return true;
 	}
+
+	
+	
+
 }

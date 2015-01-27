@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -32,6 +34,15 @@ public class Aluno extends Pessoa implements Serializable{
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "aluno_has_turma", joinColumns={@JoinColumn(name="id_aluno")}, inverseJoinColumns={@JoinColumn(name="id_curso")})
     private List<Turma> turmas;
+    
+    @Column(name = "INDICADOR_1")
+    private String indicador1;
+    
+    @Column(name = "INDICADOR_2")
+    private String indicador2;
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "aluno")
+    private List<Fatura> faturas;
 
 	public String getMatricula() {
 		return matricula;
@@ -65,11 +76,40 @@ public class Aluno extends Pessoa implements Serializable{
 		this.turmas = turmas;
 	}
 
+	public String getIndicador1() {
+		return indicador1;
+	}
+
+	public void setIndicador1(String indicador1) {
+		this.indicador1 = indicador1;
+	}
+
+	public String getIndicador2() {
+		return indicador2;
+	}
+
+	public void setIndicador2(String indicador2) {
+		this.indicador2 = indicador2;
+	}
+
+	public List<Fatura> getFaturas() {
+		return faturas;
+	}
+
+	public void setFaturas(List<Fatura> faturas) {
+		this.faturas = faturas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((etapa == null) ? 0 : etapa.hashCode());
+		result = prime * result + ((faturas == null) ? 0 : faturas.hashCode());
+		result = prime * result
+				+ ((indicador1 == null) ? 0 : indicador1.hashCode());
+		result = prime * result
+				+ ((indicador2 == null) ? 0 : indicador2.hashCode());
 		result = prime * result
 				+ ((matricula == null) ? 0 : matricula.hashCode());
 		result = prime * result
@@ -92,6 +132,21 @@ public class Aluno extends Pessoa implements Serializable{
 				return false;
 		} else if (!etapa.equals(other.etapa))
 			return false;
+		if (faturas == null) {
+			if (other.faturas != null)
+				return false;
+		} else if (!faturas.equals(other.faturas))
+			return false;
+		if (indicador1 == null) {
+			if (other.indicador1 != null)
+				return false;
+		} else if (!indicador1.equals(other.indicador1))
+			return false;
+		if (indicador2 == null) {
+			if (other.indicador2 != null)
+				return false;
+		} else if (!indicador2.equals(other.indicador2))
+			return false;
 		if (matricula == null) {
 			if (other.matricula != null)
 				return false;
@@ -109,7 +164,9 @@ public class Aluno extends Pessoa implements Serializable{
 			return false;
 		return true;
 	}
-
+    
+    
+    
     
 
 	

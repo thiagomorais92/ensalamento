@@ -8,30 +8,13 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.lucas.escola.dao.AlunoDao;
 import br.com.lucas.escola.model.Aluno;
 
 @Repository
-public class AlunoDaoImpl implements AlunoDao {
+public class AlunoDaoImpl extends DaoImpl<Aluno>  {
 	
 	@PersistenceContext
 	private EntityManager manager;
-
-	public void salvar(Aluno aluno) {
-		manager.persist(aluno);
-	}
-
-	public void atualizar(Aluno aluno) {
-		manager.merge(aluno);
-	}
-
-	public void excluir(Aluno aluno) {
-		manager.remove(aluno);
-	} 
-
-	public List<Aluno> findAll() {
-		return manager.createQuery("select a from Aluno a").getResultList();
-	}
 
 	public Aluno findAlunoByNome(String nome) {
 		Aluno aluno = new Aluno();

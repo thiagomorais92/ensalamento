@@ -5,35 +5,36 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.lucas.escola.model.Curso;
 import br.com.lucas.escola.model.Funcionario;
+import br.com.lucas.escola.persistencia.CursoDaoImpl;
 import br.com.lucas.escola.persistencia.FuncionarioDaoImpl;
-import br.com.lucas.escola.services.FuncionarioService;
+import br.com.lucas.escola.services.CursoService;
 
 @Service
-public class FuncionarioServiceImpl implements FuncionarioService {
+public class CursoServiceImpl implements CursoService {
 
 	@Autowired
-	FuncionarioDaoImpl dao;
+	CursoDaoImpl dao;
 	
-	public void persist(Funcionario t) {
+	public void persist(Curso t) {
 		dao.persist(t);
 	}
 
-	public void merge(Funcionario t) {
+	public void merge(Curso t) {
 		dao.merge(t);
 	}
 
-	public void delete(Funcionario t) {
+	public void delete(Curso t) {
 		dao.delete(t);
 	}
 
-	public List<Funcionario> getAll() {
+	public List<Curso> getAll() {
 		return dao.getAll();
 	}
 
-	public Funcionario getPorId(Integer id) {
+	public Curso getPorId(Integer id) {
 		return dao.getPorId(id);
 	}
-
 
 }

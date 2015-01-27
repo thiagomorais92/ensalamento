@@ -24,8 +24,7 @@ import br.com.lucas.escola.services.FuncionarioService;
 public class FuncionarioControllerTest {
 	
 	@Autowired
-	private FuncionarioService funcionarioService;
-	
+	private FuncionarioService service;
 
 	/**
 	 * Teste para saber se a persistência dessa entidade está funcionando corretamente.
@@ -71,7 +70,7 @@ public class FuncionarioControllerTest {
 		f.setGrauesc("Ensino Médio Completo");
 		f.setSexo('M');
 		
-		funcionarioService.persist(f);
+		service.persist(f);
 		
 		Assert.assertNotNull(f.getIdPessoa());
 		

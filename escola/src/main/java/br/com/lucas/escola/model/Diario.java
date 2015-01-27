@@ -8,7 +8,7 @@ public class Diario implements Serializable{
 
 	private Integer idDiario;
 	
-	private Materia materia;
+	private Modulo materia;
 	
 	private Turma turma;
 	

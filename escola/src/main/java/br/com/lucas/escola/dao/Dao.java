@@ -2,6 +2,8 @@ package br.com.lucas.escola.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Inteface genérica de persistência.
  * @author Lucas Moreira
