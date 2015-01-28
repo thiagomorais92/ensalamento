@@ -11,11 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import br.com.lucas.escola.dao.AlunoDao;
 import br.com.lucas.escola.dao.SalaDao;
 import br.com.lucas.escola.model.Aluno;
 import br.com.lucas.escola.model.Turma;
+import br.com.lucas.escola.persistencia.AlunoDaoImpl;
 
 /**
  * 
@@ -30,7 +29,7 @@ import br.com.lucas.escola.model.Turma;
 public class SalaController {
 	
 	@Autowired
-	private AlunoDao alunoDao;
+	private AlunoDaoImpl alunoDao;
 	
 	@Autowired
 	private SalaDao salaDao;

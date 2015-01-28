@@ -5,6 +5,24 @@
 	<persistence-unit name="tarefas">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 			<class>br.com.lucas.escola.model.Aluno</class>
+			<class>br.com.lucas.escola.model.Modulo</class>
+			<class>br.com.lucas.escola.model.Materia</class>
+			<class>br.com.lucas.escola.model.Funcionario</class>
+			<class>br.com.lucas.escola.model.Fatura</class>
+			<class>br.com.lucas.escola.model.Endereco</class>
+			<class>br.com.lucas.escola.model.DiaDaSemana</class>
+			<class>br.com.lucas.escola.model.Curso</class>
+			<class>br.com.lucas.escola.model.Cidade</class>
+			<class>br.com.lucas.escola.model.Cargo</class>
+
+			<class>br.com.lucas.escola.model.Usuario</class>
+			<class>br.com.lucas.escola.model.Uf</class>
+			<class>br.com.lucas.escola.model.Turma</class>
+			<class>br.com.lucas.escola.model.Pessoa</class>
+			<class>br.com.lucas.escola.model.Parcela</class>
+
+			
+			
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 			<property name="hibernate.show_sql" value="true"/>

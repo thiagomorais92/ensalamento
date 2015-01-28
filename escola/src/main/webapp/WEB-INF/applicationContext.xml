@@ -45,7 +45,7 @@
         <bean:property name="url"
             value="jdbc:mysql://localhost/escola" />
         <bean:property name="username" value="root" />
-        <bean:property name="password" value="san123@" />
+        <bean:property name="password" value="roothiago" />
     </bean:bean>	
     
 		
